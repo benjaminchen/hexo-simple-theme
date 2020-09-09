@@ -1,0 +1,18 @@
+<% if (site.posts.length){ %>
+<div class="card my-4">
+  <h5 class="card-header"><%= __('recent_posts') %></h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul>
+          <% site.posts.sort('date', -1).limit(5).each(function(post){ %>
+          <li>
+            <a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>

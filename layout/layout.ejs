@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+
+<body>
+  <%- partial('_partial/header') %>
+
+  <% if (page.layout !== '404')  {%>
+    <main class="main container">
+  <% } else { %>
+    <main class="main container d-flex justify-content-center align-items-center">
+  <% } %>
+      <div class="row">
+        <div class="col-lg-8">
+          <%- body %>
+        </div>
+        <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
+          <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
+        <% } %>
+      </div>
+    </main>
+
+  <%- partial('_partial/footer') %>
+</body>
+
+</html>

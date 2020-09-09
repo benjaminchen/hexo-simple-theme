@@ -1,0 +1,72 @@
+<% if (pagination == 2){ %>
+  <% page.posts.each(function(post){ %>
+    <%- partial('article', {post: post, index: true}) %>
+  <% }) %>
+<% } else { %>
+  <div class="container py-2">
+    <% page.posts.each(function(post, i){ %>
+      <% if (i % 2 == 1) { %>
+      <div class="row no-gutters">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+          <div class="row h-50">
+            <div class="col border-right">&nbsp;</div>
+            <div class="col">&nbsp;</div>
+          </div>
+          <h5 class="m-2">
+            <span class="badge badge-pill bg-light border">&nbsp;</span>
+          </h5>
+          <div class="row h-50">
+            <div class="col border-right">&nbsp;</div>
+            <div class="col">&nbsp;</div>
+          </div>
+        </div>
+        <div class="col-sm py-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-muted"><%- post.date.format('L') %></div>
+              <h4 class="card-title text-muted"><a href="<%- url_for(post.path) %>"><%= post.title %></a></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } else { %>
+      <div class="row no-gutters">
+        <div class="col-sm py-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-muted"><%- post.date.format('L') %></div>
+              <h4 class="card-title text-muted"><a href="<%- url_for(post.path) %>"><%= post.title %></a></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+          <div class="row h-50">
+            <div class="col border-right">&nbsp;</div>
+            <div class="col">&nbsp;</div>
+          </div>
+          <h5 class="m-2">
+            <span class="badge badge-pill bg-light border">&nbsp;</span>
+          </h5>
+          <div class="row h-50">
+            <div class="col border-right">&nbsp;</div>
+            <div class="col">&nbsp;</div>
+          </div>
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
+      <% } %>
+    <% }) %>
+  </div>
+<% } %>
+<% if (page.total > 1){ %>
+<nav id="page-nav">
+  <% var prev_text = "<< " + __('prev');var next_text = __('next') + " >>"%>
+  <%- paginator({
+      prev_text: prev_text,
+      next_text: next_text
+    }) %>
+</nav>
+<% } %>

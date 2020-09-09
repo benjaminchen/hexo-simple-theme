@@ -1,0 +1,27 @@
+.category-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-list-item {
+    margin: 5px 10px;
+  }
+
+  .category-list-count {
+    color: $grey;
+
+    &::before {
+      content: ' (';
+      display: inline;
+    }
+
+    &::after {
+      content: ') ';
+      display: inline;
+    }
+  }
+
+  .category-list-child {
+    padding-left: 10px;
+  }

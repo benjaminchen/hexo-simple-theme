@@ -1,0 +1,18 @@
+<% if (page.posts) { %>
+  <%- partial('_partial/archive', {pagination: config.tag, index: true}) %>
+<% } else if (site.tags.length) { %>
+  <div class="card my-4">
+    <h5 class="card-header"><%= __('tags') %></h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-12">
+          <% site.tags.each((tag, i) => { %>
+            <div class="chip">
+              <a href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>

@@ -1,0 +1,49 @@
+<% if (index){ %>
+<div class="card mb-4">
+  <img class="card-img-top" src="<%= post.image || '/images/no.jpg' %>" alt="Card image cap">
+  <div class="card-body">
+    <h2 class="card-title"><%- post.title %></h2>
+    <p class="card-text"><%= post.content.replace( /(<([^>]+)>)/ig, '').substring(0, 100) %> ......</p>
+    <a href="<%- url_for(post.path) %>" class="btn btn-secondary text-white">Read More</a>
+  </div>
+  <div class="card-footer text-muted">
+    Posted on <%= date(post.date, null) %> by
+    <a href="#"><%- post.author || config.author %></a>
+  </div>
+</div>
+<% } else { %>
+<article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope
+  itemprop="blogPost">
+  <div class="article-inner">
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
+    <header class="article-header">
+      <%- partial('post/title', {class_name: 'article-title'}) %>
+      <p class="lead">
+        by <%- post.author || config.author %>
+      </p>
+      <hr>
+      <p>Posted on <%= date(post.date, null) %></p>
+      <hr>
+      <% if (post.image) { %>
+      <img class="img-fluid rounded" src="<%= post.image %>" alt="">
+      <hr>
+      <% } %>
+    </header>
+    <% } %>
+    <div class="article-entry" itemprop="articleBody">
+      <%- post.content %>
+    </div>
+  </div>
+  <%- partial('post/nav') %>
+</article>
+<% } %>
+
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
