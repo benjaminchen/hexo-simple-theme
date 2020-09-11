@@ -11,6 +11,13 @@ menu:
   archives: /archives
   categories: /categories
   tags: /tags
+language_list:
+  us:
+    name: English
+    href: /
+  tw:
+    name: Chinese (Traditional)
+    href: https://google.com
 
 # Sidebar
 sidebar: right
