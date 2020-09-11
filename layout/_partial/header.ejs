@@ -11,7 +11,7 @@
       <ul class="navbar-nav">
         <% for (name in theme.menu) { %>
           <li class="nav-item">
-            <a href="<%- url_for(theme.menu[name]) %>" class="<%= page.path.includes(name) ? 'nav-link active' : 'nav-link' %>"><%= name.toUpperCase() %></a>
+            <a href="<%- url_for(theme.menu[name]) %>" class="<%= page.path.includes(name) ? 'nav-link active' : 'nav-link' %>"><%= __(name).toUpperCase() %></a>
           </li>
         <% } %>
         <li class="nav-item dropdown">
