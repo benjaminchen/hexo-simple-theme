@@ -16,8 +16,8 @@ language_list:
     name: English
     href: /
   tw:
-    name: Chinese (Traditional)
-    href: https://google.com
+    name: 繁體中文
+    href: https://tw.benjamin.bekateam.com/
 
 # Sidebar
 sidebar: right
