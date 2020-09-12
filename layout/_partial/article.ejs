@@ -4,7 +4,7 @@
   <div class="card-body">
     <h2 class="card-title"><%- post.title %></h2>
     <p class="card-text"><%= post.content.replace( /(<([^>]+)>)/ig, '').substring(0, 100) %> ......</p>
-    <a href="<%- url_for(post.path) %>" class="btn btn-secondary text-white">Read More</a>
+    <a href="<%- url_for(post.path) %>" class="btn btn-secondary text-white"><%= __('read_more') %> </a>
   </div>
   <div class="card-footer text-muted">
     Posted on <%= date(post.date, null) %> by
